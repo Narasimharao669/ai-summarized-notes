@@ -1,0 +1,427 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Premium SaaS Palette */
+  --sidebar-bg: #0f172a;       /* Dark Navy */
+  --sidebar-text: #94a3b8;     /* Muted Blue-Gray */
+  --sidebar-hover: #1e293b;    /* Slightly lighter Navy */
+  
+  --main-bg: #f1f5f9;          /* Very soft gray/blue */
+  --card-bg: #ffffff;
+  
+  --primary: #3b82f6;          /* Vivid Blue */
+  --primary-hover: #2563eb;
+  
+  --text-main: #1e293b;        /* Dark Slate */
+  --text-muted: #64748b;
+  
+  --danger: #ef4444;           /* Soft Red */
+  
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--main-bg);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- LAYOUT GRID --- */
+.app-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden; /* Prevents double scrollbars */
+}
+
+/* --- SIDEBAR (Left) --- */
+.sidebar {
+  width: 320px;
+  background-color: var(--sidebar-bg);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+.brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand span { color: var(--primary); }
+
+/* Form Styling */
+.note-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--sidebar-text);
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.input-group input, 
+.input-group textarea {
+  width: 100%;
+  background-color: var(--sidebar-hover);
+  border: 1px solid transparent;
+  padding: 0.85rem;
+  border-radius: 8px;
+  color: white;
+  font-family: inherit;
+  transition: all 0.2s;
+  box-sizing: border-box; /* Fixes width issues */
+}
+
+.input-group input:focus, 
+.input-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background-color: #1e293b;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.input-group textarea {
+  height: 120px;
+  resize: none;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.85rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 1rem;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* --- MAIN CONTENT (Right) --- */
+.main-content {
+  flex: 1;
+  padding: 2.5rem;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* Search Bar */
+.top-bar {
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  background-color: white; /* Ensure background is white */
+  color: #1e293b;          /* <--- FORCE TEXT TO DARK NAVY */
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s;
+}
+
+/* Optional: Make the placeholder text visible but lighter */
+.search-input::placeholder {
+  color: #94a3b8;
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: var(--shadow-md);
+  color: #0f172a; /* Even darker when typing */
+}
+
+/* Grid Layout */
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding-bottom: 2rem;
+}
+
+/* --- NOTE CARD --- */
+.note-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.note-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: #cbd5e1;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.note-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.badge-ai {
+  background: #eff6ff;
+  color: var(--primary);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+}
+
+.note-body {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  flex-grow: 1;
+  margin-bottom: 1.5rem;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 1rem;
+  margin-top: auto;
+}
+
+.note-date {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+
+
+/* Loader & Empty States */
+.loader-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--text-muted);
+  margin-top: 4rem;
+  padding: 3rem;
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+}
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw; /* Add this line just to be safe */
+  overflow: hidden;
+}
+/* Add to App.css */
+.toast-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #10b981;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 1000;
+  font-weight: 500;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+/* --- MODAL STYLES --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(15, 23, 42, 0.6); /* Dark semi-transparent dim */
+  backdrop-filter: blur(4px); /* Blur effect behind the modal */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-header h3 {
+  margin: 0 0 10px 0;
+  color: #1e293b;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-content p {
+  color: #64748b;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+/* --- BUTTONS FOR THE DELETE MODAL --- */
+
+/* The Gray "Cancel" Button */
+.btn-secondary {
+  background-color: #f1f5f9;   /* Light Slate */
+  color: #475569;              /* Dark Slate Text */
+  border: 1px solid #e2e8f0;   /* Subtle Border */
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #e2e8f0;   /* Slightly darker gray on hover */
+  color: #1e293b;
+}
+
+/* The Red "Confirm Delete" Button */
+.btn-danger {
+  background-color: #ef4444;   /* Professional Red */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.3); /* Red Glow */
+  transition: all 0.2s ease;
+}
+
+.btn-danger:hover {
+  background-color: #dc2626;   /* Darker Red on hover */
+  transform: translateY(-2px); /* Lifts up slightly */
+  box-shadow: 0 6px 10px -1px rgba(239, 68, 68, 0.4);
+}
+
+/* Optional: Add space between the two buttons */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end; /* Pushes buttons to the right */
+  gap: 12px;                 /* Space between Cancel and Delete */
+  margin-top: 20px;
+}
+.btn-delete {
+  background-color: #ef4444;   /* Professional Red */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.3); /* Red Glow */
+  transition: all 0.2s ease;
+}
+
+.btn-delete:hover {
+  background-color: #dc2626;   /* Darker Red on hover */
+  transform: translateY(-2px); /* Lifts up slightly */
+  box-shadow: 0 6px 10px -1px rgba(239, 68, 68, 0.4);
+}
+/* Update the AI Badge to look clickable */
+.badge-ai {
+  background: #eff6ff;
+  color: #2563eb;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.badge-ai:hover {
+  background: #dbeafe; /* Darker blue on hover */
+  transform: scale(1.05); /* Slightly grows */
+}
+
+.badge-ai:active {
+  transform: scale(0.95); /* Clicks down */
+}
+
+/* Simple fade animation for the summary box */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
