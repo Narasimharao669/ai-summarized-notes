@@ -13,7 +13,7 @@ function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [toastMessage, setToastMessage] = useState(null);
   
-  // NEW: Track which note is being edited
+  
   const [editingNote, setEditingNote] = useState(null); 
   const [noteToDelete, setNoteToDelete] = useState(null);
 

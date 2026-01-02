@@ -1,4 +1,4 @@
-/* frontend/src/index.css */
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -8,12 +8,76 @@
 body {
   margin: 0;
   padding: 0;
-  min-width: 100vw; /* Force full width */
+  min-width: 100vw; 
   min-height: 100vh;
 }
 
 #root {
-  width: 100%; /* Allow the React app to fill the screen */
+  width: 100%;
   margin: 0;
   padding: 0;
+}
+
+.markdown-content {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #334155;
+}
+
+.markdown-content h1, 
+.markdown-content h2, 
+.markdown-content h3 {
+  color: #1e3a8a; 
+  font-weight: 700;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 0.3rem;
+}
+
+.markdown-content h1 { font-size: 1.4rem; }
+.markdown-content h2 { font-size: 1.2rem; }
+.markdown-content h3 { font-size: 1.1rem; }
+
+.markdown-content ul, 
+.markdown-content ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+.markdown-content li {
+  margin-bottom: 0.25rem;
+}
+
+.markdown-content pre {
+  background-color: #1e293b; 
+  color: #e2e8f0; 
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto; 
+  margin: 1rem 0;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+}
+
+.markdown-content code {
+  background-color: #f1f5f9;
+  color: #ef4444; 
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+.markdown-content pre code {
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+.markdown-content blockquote {
+  border-left: 4px solid #8b5cf6;
+  background-color: #f5f3ff;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+  font-style: italic;
+  color: #5b21b6;
 }

@@ -1,21 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Premium SaaS Palette */
-  --sidebar-bg: #0f172a;       /* Dark Navy */
-  --sidebar-text: #94a3b8;     /* Muted Blue-Gray */
-  --sidebar-hover: #1e293b;    /* Slightly lighter Navy */
+  --sidebar-bg: #0f172a;
+  --sidebar-text: #94a3b8;
+  --sidebar-hover: #1e293b;
   
-  --main-bg: #f1f5f9;          /* Very soft gray/blue */
+  --main-bg: #f1f5f9;
   --card-bg: #ffffff;
   
-  --primary: #3b82f6;          /* Vivid Blue */
+  --primary: #3b82f6;
   --primary-hover: #2563eb;
   
-  --text-main: #1e293b;        /* Dark Slate */
+  --text-main: #1e293b;
   --text-muted: #64748b;
   
-  --danger: #ef4444;           /* Soft Red */
+  --danger: #ef4444;
   
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -30,14 +29,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* --- LAYOUT GRID --- */
 .app-container {
   display: flex;
   height: 100vh;
-  overflow: hidden; /* Prevents double scrollbars */
+  overflow: hidden; 
 }
 
-/* --- SIDEBAR (Left) --- */
 .sidebar {
   width: 320px;
   background-color: var(--sidebar-bg);
@@ -60,7 +57,6 @@ body {
 
 .brand span { color: var(--primary); }
 
-/* Form Styling */
 .note-form {
   display: flex;
   flex-direction: column;
@@ -87,7 +83,7 @@ body {
   color: white;
   font-family: inherit;
   transition: all 0.2s;
-  box-sizing: border-box; /* Fixes width issues */
+  box-sizing: border-box; 
 }
 
 .input-group input:focus, 
@@ -125,7 +121,6 @@ body {
   cursor: not-allowed;
 }
 
-/* --- MAIN CONTENT (Right) --- */
 .main-content {
   flex: 1;
   padding: 2.5rem;
@@ -133,7 +128,6 @@ body {
   position: relative;
 }
 
-/* Search Bar */
 .top-bar {
   margin-bottom: 2.5rem;
   max-width: 600px;
@@ -145,13 +139,12 @@ body {
   border: none;
   border-radius: 12px;
   font-size: 1rem;
-  background-color: white; /* Ensure background is white */
-  color: #1e293b;          /* <--- FORCE TEXT TO DARK NAVY */
+  background-color: white; 
+  color: #1e293b;
   box-shadow: var(--shadow-sm);
   transition: box-shadow 0.2s;
 }
 
-/* Optional: Make the placeholder text visible but lighter */
 .search-input::placeholder {
   color: #94a3b8;
 }
@@ -159,10 +152,9 @@ body {
 .search-input:focus {
   outline: none;
   box-shadow: var(--shadow-md);
-  color: #0f172a; /* Even darker when typing */
+  color: #0f172a; 
 }
 
-/* Grid Layout */
 .notes-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -170,7 +162,6 @@ body {
   padding-bottom: 2rem;
 }
 
-/* --- NOTE CARD --- */
 .note-card {
   background: white;
   border-radius: 12px;
@@ -235,9 +226,6 @@ body {
   color: #94a3b8;
 }
 
-
-
-/* Loader & Empty States */
 .loader-container {
   display: flex;
   justify-content: center;
@@ -255,10 +243,10 @@ body {
 .app-container {
   display: flex;
   height: 100vh;
-  width: 100vw; /* Add this line just to be safe */
+  width: 100vw; 
   overflow: hidden;
 }
-/* Add to App.css */
+
 .toast-notification {
   position: fixed;
   top: 20px;
@@ -277,15 +265,15 @@ body {
   from { transform: translateX(100%); opacity: 0; }
   to { transform: translateX(0); opacity: 1; }
 }
-/* --- MODAL STYLES --- */
+
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(15, 23, 42, 0.6); /* Dark semi-transparent dim */
-  backdrop-filter: blur(4px); /* Blur effect behind the modal */
+  background-color: rgba(15, 23, 42, 0.6); 
+  backdrop-filter: blur(4px); 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -324,7 +312,6 @@ body {
   gap: 12px;
 }
 
-/* Animations */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -334,13 +321,11 @@ body {
   from { opacity: 0; transform: translateY(20px) scale(0.95); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
-/* --- BUTTONS FOR THE DELETE MODAL --- */
 
-/* The Gray "Cancel" Button */
 .btn-secondary {
-  background-color: #f1f5f9;   /* Light Slate */
-  color: #475569;              /* Dark Slate Text */
-  border: 1px solid #e2e8f0;   /* Subtle Border */
+  background-color: #f1f5f9; 
+  color: #475569; 
+  border: 1px solid #e2e8f0; 
   padding: 10px 20px;
   border-radius: 8px;
   cursor: pointer;
@@ -350,13 +335,12 @@ body {
 }
 
 .btn-secondary:hover {
-  background-color: #e2e8f0;   /* Slightly darker gray on hover */
+  background-color: #e2e8f0; 
   color: #1e293b;
 }
 
-/* The Red "Confirm Delete" Button */
 .btn-danger {
-  background-color: #ef4444;   /* Professional Red */
+  background-color: #ef4444; 
   color: white;
   border: none;
   padding: 10px 20px;
@@ -364,25 +348,24 @@ body {
   cursor: pointer;
   font-weight: 600;
   font-size: 0.95rem;
-  box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.3); /* Red Glow */
+  box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.3); 
   transition: all 0.2s ease;
 }
 
 .btn-danger:hover {
-  background-color: #dc2626;   /* Darker Red on hover */
-  transform: translateY(-2px); /* Lifts up slightly */
+  background-color: #dc2626; 
+  transform: translateY(-2px); 
   box-shadow: 0 6px 10px -1px rgba(239, 68, 68, 0.4);
 }
 
-/* Optional: Add space between the two buttons */
 .modal-actions {
   display: flex;
-  justify-content: flex-end; /* Pushes buttons to the right */
-  gap: 12px;                 /* Space between Cancel and Delete */
+  justify-content: flex-end; 
+  gap: 12px; 
   margin-top: 20px;
 }
 .btn-delete {
-  background-color: #ef4444;   /* Professional Red */
+  background-color: #ef4444; 
   color: white;
   border: none;
   padding: 10px 20px;
@@ -390,16 +373,16 @@ body {
   cursor: pointer;
   font-weight: 600;
   font-size: 0.95rem;
-  box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.3); /* Red Glow */
+  box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.3); 
   transition: all 0.2s ease;
 }
 
 .btn-delete:hover {
-  background-color: #dc2626;   /* Darker Red on hover */
-  transform: translateY(-2px); /* Lifts up slightly */
+  background-color: #dc2626; 
+  transform: translateY(-2px); 
   box-shadow: 0 6px 10px -1px rgba(239, 68, 68, 0.4);
 }
-/* Update the AI Badge to look clickable */
+
 .badge-ai {
   background: #eff6ff;
   color: #2563eb;
@@ -412,15 +395,14 @@ body {
 }
 
 .badge-ai:hover {
-  background: #dbeafe; /* Darker blue on hover */
-  transform: scale(1.05); /* Slightly grows */
+  background: #dbeafe; 
+  transform: scale(1.05); 
 }
 
 .badge-ai:active {
-  transform: scale(0.95); /* Clicks down */
+  transform: scale(0.95); 
 }
 
-/* Simple fade animation for the summary box */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-5px); }
   to { opacity: 1; transform: translateY(0); }
